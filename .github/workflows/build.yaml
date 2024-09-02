@@ -38,8 +38,9 @@ jobs:
         run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: actions/create-release@latest
         # if: github.ref_type == 'tag'
         with:
-          name: "${{ github.ref_name }} — ${{ env.DATE }}"
+          tag_name: "${{ github.ref_name }} — ${{ env.DATE }}"
+          release_name: "${{ github.ref_name }} — ${{ env.DATE }}"
           files: main.pdf
