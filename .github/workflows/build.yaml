@@ -8,19 +8,17 @@ permissions:
   contents: write
 
 jobs:
-  check-commits:
-    steps:
-      - run: echo "NEW_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
   build:
-    needs: [check-commits]
-    if: ${{ env.NEW_COMMIT_COUNT > 0 }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-     
+      - name: Ensure there are new commits to compile
+        run: echo "NEW_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
+
       - name: Typst
+        if: ${{ env.NEW_COMMIT_COUNT > 0 }}
         uses: lvignoli/typst-action@main
         with:
           source_file: |
