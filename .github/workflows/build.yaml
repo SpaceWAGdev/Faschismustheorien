@@ -49,3 +49,4 @@ jobs:
         with:
           name: "${{ github.ref_name }} — ${{ env.DATE }}"
           files: Faschismustheorien_Liam_Stedman.pdf
+          prerelease: true
