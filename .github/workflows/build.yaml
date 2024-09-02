@@ -23,12 +23,15 @@ jobs:
         with:
           source_file: |
             __main.typ
+      
+      - name: Rename PDF File
+        run: "mv __main.pdf Faschismustheorien_Liam_Stedman.pdf"
 
       - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: "*.pdf"
+          path: "Faschismustheorien_Liam_Stedman.pdf"
 
       - name: Get current date
         id: date
