@@ -37,10 +37,15 @@ jobs:
         id: date
         run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
 
-      - name: Release
-        uses: actions/create-release@latest
-        # if: github.ref_type == 'tag'
+       - name: Tag snapshot
+        uses: tvdias/github-tagger@v0.0.1
         with:
-          tag_name: "${{ github.ref_name }} — ${{ env.DATE }}"
-          release_name: "${{ github.ref_name }} — ${{ env.DATE }}"
-          files: main.pdf
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.DATE }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.ref_type == 'tag'
+        with:
+          name: "${{ github.ref_name }} — ${{ env.DATE }}"
+          files: Faschismustheorien_Liam_Stedman.pdf
