@@ -4,7 +4,7 @@
 // Aufbau der Arbeit, Hypothese
 
 #quote[
-  Bla
+  Blabla
 ]
 
 Dass sowohl der Faschismus, als auch die theoretischen Zugriffe des letzten Jahrhunderts unter anderen sozioökonomischen, politischen und diskursiven Umständen entstanden, legt den Schluss nahe, dass diese theoretischen Ansätze im einundzwanzigsten Jahrhundert  keine Erklärungskraft mehr besitzen und die Phänomene im Zusammenhang der neuen Rechten völlig neue Erklärungsmodelle erfordern. 
