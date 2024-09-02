@@ -37,7 +37,7 @@ jobs:
         id: date
         run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
 
-       - name: Tag snapshot
+      - name: Tag snapshot
         uses: tvdias/github-tagger@v0.0.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
