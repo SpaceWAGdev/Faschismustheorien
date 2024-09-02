@@ -8,13 +8,9 @@ permissions:
   contents: write
 
 jobs:
-  filter:
-    outputs:
-      new-commits-nonzero:
-        run: "git log --oneline --since '24 hours ago' | wc -l -gt 0"
 
   build:
-    needs: [filter, new-commits-nonzero]
+    if: ${{git log --oneline --since '24 hours ago' | wc -l -gt 0}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
