@@ -10,7 +10,8 @@ permissions:
 jobs:
   filter:
     outputs:
-      new-commits-nonzero: "git log --oneline --since '24 hours ago' | wc -l -gt 0"
+      new-commits-nonzero:
+        run: "git log --oneline --since '24 hours ago' | wc -l -gt 0"
 
   build:
     needs: [filter, new-commits-nonzero]
