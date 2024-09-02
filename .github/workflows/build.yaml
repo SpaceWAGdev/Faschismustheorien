@@ -8,9 +8,12 @@ permissions:
   contents: write
 
 jobs:
-
+  check-commits:
+    steps:
+      - run: echo "NEW_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
   build:
-    if: ${{git log --oneline --since '24 hours ago' | wc -l -gt 0}}
+    needs: [check-commits]
+    if: ${{ env.NEW_COMMIT_COUNT > 0 }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
